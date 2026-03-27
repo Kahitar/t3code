@@ -103,6 +103,12 @@ const PROVIDER_SETTINGS: readonly InstallProviderSettings[] = [
     binaryPlaceholder: "Claude binary path",
     binaryDescription: "Path to the Claude binary",
   },
+  {
+    provider: "jeanClaude",
+    title: "Jean-Claude",
+    binaryPlaceholder: "Jean-Claude binary path",
+    binaryDescription: "Path to the jean-claude binary (default: jean)",
+  },
 ];
 
 const PROVIDER_STATUS_STYLES = {
@@ -301,12 +307,18 @@ function SettingsRouteView() {
         DEFAULT_UNIFIED_SETTINGS.providers.claudeAgent.binaryPath ||
       settings.providers.claudeAgent.customModels.length > 0,
     ),
+    jeanClaude: Boolean(
+      settings.providers.jeanClaude.binaryPath !==
+        DEFAULT_UNIFIED_SETTINGS.providers.jeanClaude.binaryPath ||
+      settings.providers.jeanClaude.customModels.length > 0,
+    ),
   });
   const [customModelInputByProvider, setCustomModelInputByProvider] = useState<
     Record<ProviderKind, string>
   >({
     codex: "",
     claudeAgent: "",
+    jeanClaude: "",
   });
   const [customModelErrorByProvider, setCustomModelErrorByProvider] = useState<
     Partial<Record<ProviderKind, string | null>>
@@ -553,10 +565,12 @@ function SettingsRouteView() {
     setOpenProviderDetails({
       codex: false,
       claudeAgent: false,
+      jeanClaude: false,
     });
     setCustomModelInputByProvider({
       codex: "",
       claudeAgent: "",
+      jeanClaude: "",
     });
     setCustomModelErrorByProvider({});
   }

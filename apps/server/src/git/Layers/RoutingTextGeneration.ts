@@ -11,11 +11,7 @@
  */
 import { Effect, Layer, ServiceMap } from "effect";
 
-import {
-  TextGeneration,
-  type TextGenerationProvider,
-  type TextGenerationShape,
-} from "../Services/TextGeneration.ts";
+import { TextGeneration, type TextGenerationShape } from "../Services/TextGeneration.ts";
 import { CodexTextGenerationLive } from "./CodexTextGeneration.ts";
 import { ClaudeTextGenerationLive } from "./ClaudeTextGeneration.ts";
 
@@ -39,8 +35,8 @@ const makeRoutingTextGeneration = Effect.gen(function* () {
   const codex = yield* CodexTextGen;
   const claude = yield* ClaudeTextGen;
 
-  const route = (provider?: TextGenerationProvider): TextGenerationShape =>
-    provider === "claudeAgent" ? claude : codex;
+  const route = (provider?: string): TextGenerationShape =>
+    provider === "claudeAgent" || provider === "jeanClaude" ? claude : codex;
 
   return {
     generateCommitMessage: (input) =>

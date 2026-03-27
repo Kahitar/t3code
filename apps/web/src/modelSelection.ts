@@ -45,6 +45,13 @@ const PROVIDER_CUSTOM_MODEL_CONFIG: Record<ProviderKind, ProviderCustomModelConf
     placeholder: "your-claude-model-slug",
     example: "claude-sonnet-5-0",
   },
+  jeanClaude: {
+    provider: "jeanClaude",
+    title: "Jean-Claude",
+    description: "Save additional Jean-Claude model slugs for the picker and `/model` command.",
+    placeholder: "your-model-slug",
+    example: "claude-sonnet-4-6",
+  },
 };
 
 export const MODEL_PROVIDER_SETTINGS = Object.values(PROVIDER_CUSTOM_MODEL_CONFIG);
@@ -164,6 +171,12 @@ export function getCustomModelOptionsByProvider(
       providers,
       "claudeAgent",
       selectedProvider === "claudeAgent" ? selectedModel : undefined,
+    ),
+    jeanClaude: getAppModelOptions(
+      settings,
+      providers,
+      "jeanClaude",
+      selectedProvider === "jeanClaude" ? selectedModel : undefined,
     ),
   };
 }

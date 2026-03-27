@@ -309,3 +309,20 @@ export const OpenCodeIcon: Icon = (props) => (
     </defs>
   </svg>
 );
+
+export const JeanClaudeIcon: Icon = (props) => (
+  <svg {...props} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="6" fill="currentColor" fillOpacity="0.15" />
+    <text
+      x="16"
+      y="22"
+      textAnchor="middle"
+      fontSize="13"
+      fontWeight="700"
+      fontFamily="system-ui, sans-serif"
+      fill="currentColor"
+    >
+      JC
+    </text>
+  </svg>
+);

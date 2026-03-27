@@ -25,6 +25,7 @@ export type ClaudeModelOptions = typeof ClaudeModelOptions.Type;
 export const ProviderModelOptions = Schema.Struct({
   codex: Schema.optional(CodexModelOptions),
   claudeAgent: Schema.optional(ClaudeModelOptions),
+  jeanClaude: Schema.optional(Schema.Struct({})),
 });
 export type ProviderModelOptions = typeof ProviderModelOptions.Type;
 
@@ -54,6 +55,7 @@ export type ModelCapabilities = typeof ModelCapabilities.Type;
 export const DEFAULT_MODEL_BY_PROVIDER: Record<ProviderKind, string> = {
   codex: "gpt-5.4",
   claudeAgent: "claude-sonnet-4-6",
+  jeanClaude: "claude-sonnet-4.6",
 };
 
 export const DEFAULT_MODEL = DEFAULT_MODEL_BY_PROVIDER.codex;
@@ -62,6 +64,7 @@ export const DEFAULT_MODEL = DEFAULT_MODEL_BY_PROVIDER.codex;
 export const DEFAULT_GIT_TEXT_GENERATION_MODEL_BY_PROVIDER: Record<ProviderKind, string> = {
   codex: "gpt-5.4-mini",
   claudeAgent: "claude-haiku-4-5",
+  jeanClaude: "claude-haiku-4.5",
 };
 
 export const MODEL_SLUG_ALIASES_BY_PROVIDER: Record<ProviderKind, Record<string, string>> = {
@@ -86,6 +89,17 @@ export const MODEL_SLUG_ALIASES_BY_PROVIDER: Record<ProviderKind, Record<string,
     "claude-haiku-4.5": "claude-haiku-4-5",
     "claude-haiku-4-5-20251001": "claude-haiku-4-5",
   },
+  jeanClaude: {
+    sonnet: "claude-sonnet-4.6",
+    "sonnet-4.6": "claude-sonnet-4.6",
+    "claude-sonnet-4-6": "claude-sonnet-4.6",
+    haiku: "claude-haiku-4.5",
+    "haiku-4.5": "claude-haiku-4.5",
+    "claude-haiku-4-5": "claude-haiku-4.5",
+    opus: "claude-opus-4.6",
+    "opus-4.6": "claude-opus-4.6",
+    "claude-opus-4-6": "claude-opus-4.6",
+  },
 };
 
 // ── Provider display names ────────────────────────────────────────────
@@ -93,4 +107,5 @@ export const MODEL_SLUG_ALIASES_BY_PROVIDER: Record<ProviderKind, Record<string,
 export const PROVIDER_DISPLAY_NAMES: Record<ProviderKind, string> = {
   codex: "Codex",
   claudeAgent: "Claude",
+  jeanClaude: "Jean-Claude",
 };
